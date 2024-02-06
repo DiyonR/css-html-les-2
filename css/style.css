@@ -1,0 +1,100 @@
+body {
+    display: grid;
+    grid-template-columns: auto 800px auto;
+    grid-template-rows: auto 608px auto;
+}
+
+#title {
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
+
+#gameWindow {
+    width: 800px;
+    height: 608px;
+    background-color: blue;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    position: relative;
+}
+
+#inventoryBox {
+    width: 180px;
+    height: 80px;
+    background-color: #000000;
+    top: 10px;
+    left: 10px;
+}
+
+#dialogBar {
+    bottom: 0px;
+}
+
+#setMainDialog {
+    position: relative;
+    width: 800px;
+    height: 64px;
+    background-color: white;
+}
+
+#heroAvatar {
+    width: 64px;
+    height: 64px;
+    background-color: orange;
+    bottom: 0px;
+    left: 0px;
+}
+
+#heroSpeech {
+    width: 300px;
+    height: 40px;
+    background-color: lightsalmon;
+    bottom: 24px;
+    left: 64px;
+
+}
+
+#counterSpeech {
+    width: 300px;
+    height: 40px;
+    background-color: lightcoral;
+    bottom: 24px;
+    right: 64px;
+}
+
+#counterAvatar {
+    width: 64px;
+    height: 64px;
+    background-color: red;
+    bottom: 0px;
+    right: 0px;
+}
+
+
+
+#hero {
+    width: 32px;
+    height: 32px;
+    background-color: pink;
+    left: 303px;
+
+    top: 400px;
+
+}
+
+#tileMap {}
+
+.background {
+    position: absolute;
+    z-index: 0;
+}
+
+.character {
+    position: absolute;
+    z-index: 100;
+}
+
+.foreground {
+    position: absolute;
+    z-index: 1000;
+}
