@@ -19,11 +19,16 @@ body {
 }
 
 #inventoryBox {
+    position: relative;
+    display: block;
+    left: 10px;
+    top: 10px;
     width: 180px;
     height: 80px;
-    background-color: #000000;
-    top: 10px;
-    left: 10px;
+    color: white;
+    background-color: #0c0c0b;
+    border: white 1px solid;
+    padding: 10px;
 }
 
 #dialogBar {
@@ -79,10 +84,31 @@ body {
     left: 303px;
 
     top: 400px;
-
+    transition: all 1s ease-in-out;
 }
 
 #tileMap {}
+
+
+#door1 {
+
+    width: 64px;
+    height: 64px;
+    background-color: rgb(105, 65, 0);
+    opacity: 2;
+    top: 200px;
+    left: 300px;
+}
+
+#key {
+
+    width: 64px;
+    height: 64px;
+    background-color: rgb(217, 255, 0);
+    opacity: 2;
+    top: 140px;
+    left: 150px;
+}
 
 .background {
     position: absolute;
@@ -92,6 +118,8 @@ body {
 .character {
     position: absolute;
     z-index: 100;
+    transition: all 1s ease-in-out;
+
 }
 
 .foreground {
