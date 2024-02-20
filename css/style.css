@@ -26,7 +26,7 @@ body {
     width: 180px;
     height: 80px;
     color: white;
-    background-color: #0c0c0b;
+    background-color: #707070;
     border: white 1px solid;
     padding: 10px;
 }
@@ -53,7 +53,7 @@ body {
 #heroSpeech {
     width: 300px;
     height: 40px;
-    background-color: rgb(255, 197, 98);
+
     bottom: 24px;
     left: 64px;
 
@@ -62,7 +62,7 @@ body {
 #counterSpeech {
     width: 300px;
     height: 40px;
-    background-color: rgb(255, 125, 244);
+
     bottom: 24px;
     right: 64px;
 }
@@ -80,14 +80,17 @@ body {
 #hero {
     width: 32px;
     height: 32px;
-    background-color: pink;
+
     left: 303px;
 
     top: 400px;
     transition: all 1s ease-in-out;
 }
 
-#tileMap {}
+#tileMap {
+    top: 0px;
+    left: 0px;
+}
 
 
 #door1 {
@@ -102,9 +105,9 @@ body {
 
 #key {
 
-    width: 64px;
-    height: 64px;
-    background-color: rgb(217, 255, 0);
+    width: 32px;
+    height: 32px;
+    background-color: rgb(0, 0, 0);
     opacity: 2;
     top: 140px;
     left: 150px;
