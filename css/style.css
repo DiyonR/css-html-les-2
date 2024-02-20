@@ -38,7 +38,7 @@ body {
 #setMainDialog {
     position: relative;
     width: 800px;
-    height: 64px;
+    height: 32px;
     background-color: rgb(237, 164, 164);
 }
 
@@ -93,24 +93,32 @@ body {
 }
 
 
-#door1 {
 
-    width: 64px;
-    height: 64px;
-    background-color: rgb(105, 65, 0);
-    opacity: 2;
-    top: 200px;
-    left: 300px;
-}
 
 #key {
 
-    width: 32px;
-    height: 32px;
+    width: 16px;
+    height: 16px;
     background-color: rgb(0, 0, 0);
     opacity: 2;
-    top: 140px;
-    left: 150px;
+    top: 220px;
+    left: 320px;
+}
+
+#well {
+    width: 64px;
+    height: 64px;
+    background-color: red;
+    left: 290px;
+    top: 96px;
+}
+
+#doorWizardHut {
+    width: 32px;
+    height: 64px;
+    background-color: red;
+    left: 177px;
+    top: 290px;
 }
 
 .background {

@@ -5,10 +5,11 @@ const gameWindow = document.getElementById("gameWindow");
 
 
 let inventory = [];
+console.log(inventory);
 const inventoryList = document.getElementById("inventoryList");
 //FOREGROUND
 
-const door1 = document.getElementById("door1")
+
 const KeyElement = document.getElementById("key");
 //main character code
 const mainCharacter = document.getElementById("hero");
@@ -33,32 +34,51 @@ gameWindow.onclick = function (e) {
     console.log(e.target.id);
 
     switch (e.target.id) {
-        case "door1": door1.style.opacity = 0.7;
-            break;
-
-
         case "key":
-
-            showItem("rusty key", "rustyKey")
-
+            getItem("Rusty key", "rustyKey");
+            break;
+        case "well":
+            getItem("Coin", "Coin");
+            break;
+        case "doorWizardHut":
+            if (checkItem("Rusty key")) {
+                console.log("opened door");
+            } else if (checkItem("Coin")) {
+                removeItem("Coin", "Coin");
+                console.log("oh no my lucky Coin fell through the door opening");
+            } else {
+                console.log("fuck this door");
+            }
+            break;
+        default:
             break;
 
-        default: door1.style.opacity = 1;
-
-            break;
     }
+
+
+    /**   
+     * removes item from array
+     * @param {string} itemName 
+     * @param {string} itemId 
+     */
 
     function getItem(itemName, itemId) {
-
+        if (!checkItem(itemName)) {
+            inventory.push(itemName);
+            showItem(itemName, itemId);
+        }
+        console.log(inventory);
     }
     function checkItem(itemId) {
-
+        return inventory.includes(itemId);
     }
+
     /**
      * needs a name for displaying item and a html id name
      * @param {string} itemId 
      * @param {string} itemName 
      */
+
     function showItem(itemName, itemId) {
         console.log("you found a " + itemName + "!");
         const KeyElement = document.createElement("li");
@@ -66,8 +86,14 @@ gameWindow.onclick = function (e) {
         KeyElement.innerText = itemName;
         inventoryList.appendChild(KeyElement);
     }
-    function removeItem(itemId, itemName) {
 
+    function removeItem(itemId, itemName) {
+        //remove item in array
+        inventory = inventory.filter(function (newInventory) {
+            return newInventory !== itemName;
+        }
+        );
+        document.getElementById(itemId).remove();
     }
 
 }
