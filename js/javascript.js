@@ -50,6 +50,8 @@ gameWindow.onclick = function (e) {
                 console.log("fuck this door");
             }
             break;
+        case "statue":
+            console.log("hey wanna know where the key is? it is behind some grave i heard");
         default:
             break;
 

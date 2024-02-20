@@ -38,14 +38,14 @@ body {
 #setMainDialog {
     position: relative;
     width: 800px;
-    height: 32px;
-    background-color: rgb(237, 164, 164);
+    height: 64px;
+    background-color: rgb(0, 0, 0);
 }
 
 #heroAvatar {
-    width: 64px;
-    height: 64px;
-    background-color: rgb(250, 100, 0);
+    width: 72px;
+    height: 68px;
+
     bottom: 0px;
     left: 0px;
 }
@@ -82,8 +82,8 @@ body {
     height: 32px;
 
     left: 303px;
-
     top: 400px;
+
     transition: all 1s ease-in-out;
 }
 
@@ -99,16 +99,16 @@ body {
 
     width: 16px;
     height: 16px;
-    background-color: rgb(0, 0, 0);
+
     opacity: 2;
-    top: 220px;
-    left: 320px;
+    top: 450px;
+    left: 40px;
 }
 
 #well {
     width: 64px;
     height: 64px;
-    background-color: red;
+
     left: 290px;
     top: 96px;
 }
@@ -116,9 +116,17 @@ body {
 #doorWizardHut {
     width: 32px;
     height: 64px;
-    background-color: red;
+
     left: 177px;
     top: 290px;
+}
+
+#statue {
+    width: 32px;
+    height: 64px;
+
+    left: 704px;
+    top: 285px;
 }
 
 .background {
