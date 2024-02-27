@@ -136,6 +136,7 @@ body {
 
     left: 704px;
     top: 285px;
+    transition: all 1s ease-in-out;
 }
 
 .background {
