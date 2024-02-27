@@ -39,7 +39,7 @@ body {
     position: relative;
     width: 800px;
     height: 64px;
-    background-color: rgb(0, 0, 0);
+
 }
 
 #heroAvatar {
@@ -52,30 +52,39 @@ body {
 
 #heroSpeech {
     width: 300px;
-    height: 40px;
-
-    bottom: 24px;
-    left: 64px;
-
+    height: 25px;
+    background-color: white;
+    top: 12px;
+    left: 70px;
+    opacity: 0;
 }
 
 #counterSpeech {
     width: 300px;
-    height: 40px;
+    height: 25px;
+    background-color: white;
+    top: 12px;
+    right: 70px;
+    opacity: 0;
 
-    bottom: 24px;
-    right: 64px;
 }
 
 #counterAvatar {
-    width: 64px;
-    height: 64px;
-    background-color: rgb(199, 45, 255);
+    width: 72px;
+    height: 68px;
     bottom: 0px;
     right: 0px;
+    opacity: 0;
+
 }
 
+#brownBar {
+    bottom: 0px;
+    height: 32px;
+    background-color: rgb(95, 57, 0);
+    width: 800px;
 
+}
 
 #hero {
     width: 32px;
@@ -144,4 +153,12 @@ body {
 .foreground {
     position: absolute;
     z-index: 1000;
+}
+
+.speechBubble {
+    border-radius: 60px;
+    padding: 5px 5px 5px 20px;
+    user-select: none;
+    cursor: default;
+    transition: all 1s ease-in-out;
 }

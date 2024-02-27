@@ -1,12 +1,6 @@
 document.getElementById("mainTitle").innerText = "Point And Click Adventure Game";
 
-// gameWindow reference
-const gameWindow = document.getElementById("gameWindow");
 
-
-
-const inventoryList = document.getElementById("inventoryList");
-//FOREGROUND
 
 
 // gamestttate
@@ -15,15 +9,26 @@ gameState = {
     "coinPickedUp": false
 }
 
-//main character code
-const KeyElement = document.getElementById("key");
-const mainCharacter = document.getElementById("hero");
-const offsetCharacter = 16;
 
-runGame();
+
+
 
 function runGame() {
 
+    // gameWindow reference
+    const gameWindow = document.getElementById("gameWindow");
+    const inventoryList = document.getElementById("inventoryList");
+    const sec = 1000;
+    //main character code
+
+    const mainCharacter = document.getElementById("hero");
+    const offsetCharacter = 16;
+    //speechBubbles
+    const heroSpeech = document.getElementById("heroSpeech");
+    const counterSpeech = document.getElementById("counterSpeech");
+
+    // objects
+    const KeyElement = document.getElementById("key");
 
 
     gameWindow.onclick = function (e) {
@@ -45,7 +50,7 @@ function runGame() {
         switch (e.target.id) {
             case "key":
 
-                changeInventory("key", "Add")
+                changeInventory("key", "Add");
                 document.getElementById("key").remove();
 
                 break;
@@ -62,16 +67,20 @@ function runGame() {
                 break;
             case "doorWizardHut":
                 if (checkItem("key")) {
+                    showMessage(heroSpeech, "the door has opened");
                     console.log("opened door");
 
                 } else if (checkItem("coin")) {
                     changeInventory("coin", "remove");
-                    console.log("oh no my lucky Coin fell through the door opening");
+                    showMessage(heroSpeech, "oh no my lucky Coin fell through the door opening");
+
                 } else {
+                    showMessage(heroSpeech, "fuck this door");
                     console.log("fuck this door");
                 }
                 break;
             case "statue":
+                showMessage(heroSpeech, "hey wanna know where the key is? it is behind some grave i heard")
                 console.log("hey wanna know where the key is? it is behind some grave i heard");
             default:
                 break;
@@ -140,4 +149,21 @@ function runGame() {
         }
         );
     }
+    /**
+     * 
+     * @param {getElementById} targetBubble 
+     * @param {string} message 
+     */
+    function showMessage(targetBubble, message) {
+        targetBubble.innerText = message
+        targetBubble.style.opacity = 1;
+        setTimeout(hideMessage, 4 * sec, targetBubble)
+
+    }
+    function hideMessage(targetBubble) {
+        targetBubble.innerText = "...";
+        targetBubble.style.opacity = 0;
+    }
+
 }
+runGame();
