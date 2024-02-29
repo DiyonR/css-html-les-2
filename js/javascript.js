@@ -79,7 +79,9 @@ function runGame() {
 
 
                     } else {
-                        showMessage(heroSpeech, "fuck this door", heroAudio);
+                        showMessage(heroSpeech, "I need a key..", heroAudio);
+
+                        setTimeout(showMessage, 4 * sec, heroSpeech, "maybe I should look at the signs?", heroAudio);
                         console.log("fuck this door");
                     }
                     break;
