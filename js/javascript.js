@@ -84,11 +84,11 @@ function runGame() {
                     }
                     break;
                 case "statue":
-                    showMessage(heroSpeech, "hey a statue, looks alright..", heroAudio);
+                    showMessage(heroSpeech, "hey a sign, looks alright..", heroAudio);
                     setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                    setTimeout(showMessage, 4 * sec, counterSpeech, "ALRIGHT?? i look amazing", counterAudio);
+                    setTimeout(showMessage, 4 * sec, counterSpeech, "ALRIGHT?? I look amazing", counterAudio);
                     setTimeout(showMessage, 8 * sec, heroSpeech, "wait, do you know where the key is?", heroAudio);
-                    setTimeout(showMessage, 12 * sec, counterSpeech, "yes, it is by the graves.", counterAudio);
+                    setTimeout(showMessage, 12 * sec, counterSpeech, "yes, it is by the mushrooms.", counterAudio);
                     setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
 
                     console.log("hey wanna know where the key is? it is behind some grave i heard");

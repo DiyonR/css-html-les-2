@@ -110,33 +110,38 @@ body {
     height: 16px;
 
     opacity: 2;
-    top: 450px;
-    left: 40px;
+    top: 400px;
+    left: 540px;
 }
 
 #Well {
     width: 64px;
     height: 64px;
 
-    left: 290px;
+    left: 350px;
     top: 96px;
 }
 
 #doorWizardHut {
     width: 32px;
-    height: 64px;
+    height: 40px;
 
-    left: 177px;
-    top: 290px;
+    left: 440px;
+    top: 330px;
 }
 
 #statue {
-    width: 32px;
-    height: 64px;
+    width: 30px;
+    height: 30px;
 
-    left: 704px;
-    top: 285px;
+    left: 115px;
+    top: 510px;
     transition: all 1s ease-in-out;
+}
+
+#tile {
+    width: 800px;
+    height: 608px;
 }
 
 .background {
