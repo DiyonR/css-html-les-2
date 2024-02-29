@@ -84,12 +84,12 @@ function runGame() {
                     }
                     break;
                 case "statue":
-                    showMessage(heroSpeech, "hey statue, looks alright..", heroAudio)
+                    showMessage(heroSpeech, "hey a statue, looks alright..", heroAudio);
                     setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                    setTimeout(showMessage, 4.1 * sec, counterSpeech, "I can talk you know", counterAudio);
-                    setTimeout(showMessage, 8.1 * sec, heroSpeech, "wait, do you know where the key is?", heroAudio);
-                    setTimeout(showMessage, 12.1 * sec, counterSpeech, "yes, it is by the graves.", counterAudio);
-                    setInterval(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+                    setTimeout(showMessage, 4 * sec, counterSpeech, "ALRIGHT?? i look amazing", counterAudio);
+                    setTimeout(showMessage, 8 * sec, heroSpeech, "wait, do you know where the key is?", heroAudio);
+                    setTimeout(showMessage, 12 * sec, counterSpeech, "yes, it is by the graves.", counterAudio);
+                    setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
 
                     console.log("hey wanna know where the key is? it is behind some grave i heard");
                     break;
@@ -98,93 +98,93 @@ function runGame() {
             }
         }
     }
-}
 
 
-/**
- *  this function adds or removes item in inventory
- * @param {string} itemName 
- * @param {string} action 
- */
-function changeInventory(itemName, action) {
-    if (itemName == null || action == null) {
-        console.error("wrong parameters given to changeInventory");
-        return;
+
+    /**
+     *  this function adds or removes item in inventory
+     * @param {string} itemName 
+     * @param {string} action 
+     */
+    function changeInventory(itemName, action) {
+        if (itemName == null || action == null) {
+            console.error("wrong parameters given to changeInventory");
+            return;
+        }
+        switch (action) {
+
+            case "Add":
+                gameState.inventory.push(itemName);
+                break;
+            case "remove":
+                gameState.inventory = gameState.inventory.filter(function (newInventory) {
+                    return newInventory !== itemName;
+                });
+                document.getElementById("inv-" + itemName).remove();
+
+                break;
+
+        }
+        updateInventory(gameState.inventory, inventoryList);
     }
-    switch (action) {
 
-        case "Add":
+
+
+
+    /**   
+     * removes item from array
+     * @param {string} itemName 
+     * @param {string} itemId 
+     */
+
+    function getItem(itemName, itemId) {
+        if (!checkItem(itemName)) {
             gameState.inventory.push(itemName);
-            break;
-        case "remove":
-            gameState.inventory = gameState.inventory.filter(function (newInventory) {
-                return newInventory !== itemName;
-            });
-            document.getElementById("inv-" + itemName).remove();
+            showItem(itemName, itemId);
+        }
+        console.log(inventory);
+    }
+    function checkItem(itemId) {
+        return gameState.inventory.includes(itemId);
+    }
 
-            break;
+
+
+    function updateInventory(inventory, inventoryList) {
+        inventoryList.innerHTML = '';
+        inventory.forEach(function (item) {
+            const inventoryItem = document.createElement("li");
+            inventoryItem.id = "inv-" + item;
+            inventoryItem.innerText = item;
+            inventoryList.appendChild(inventoryItem);
+        }
+        );
+    }
+    /**
+     *  will show dialog and trigger sound
+     * @param {getElementById} targetBubble 
+     * @param {string} message 
+     * @param {getElementById} targetSound
+     */
+    function showMessage(targetBubble, message, targetSound) {
+        targetSound.currentTime = 0;
+        targetSound.play();
+        targetBubble.innerText = message;
+        targetBubble.style.opacity = "1";
+        checkDialog = true;
+        setTimeout(hideMessage, 4 * sec, targetBubble, targetSound);
 
     }
-    updateInventory(gameState.inventory, inventoryList)
-}
+    /**
+     * hides  the message and pauses the audio
+     * @param {getElementById} targetBubble 
+     * @param {getElementById} targetSound 
+     */
+    function hideMessage(targetBubble, targetSound) {
+        targetSound.pause();
 
-
-
-
-/**   
- * removes item from array
- * @param {string} itemName 
- * @param {string} itemId 
- */
-
-function getItem(itemName, itemId) {
-    if (!checkItem(itemName)) {
-        gameState.inventory.push(itemName);
-        showItem(itemName, itemId);
+        targetBubble.style.opacity = "0";
     }
-    console.log(inventory);
 }
-function checkItem(itemId) {
-    return gameState.inventory.includes(itemId);
-}
-
-
-
-function updateInventory(inventory, inventoryList) {
-    inventoryList.innerHTML = '';
-    inventory.forEach(function (item) {
-        const inventoryItem = document.createElement("li");
-        inventoryItem.id = "inv-" + item;
-        inventoryItem.innerText = item;
-        inventoryList.appendChild(inventoryItem);
-    }
-    );
-}
-/**
- *  will show dialog and trigger sound
- * @param {getElementById} targetBubble 
- * @param {string} message 
- * @param {getElementById} targetSound
- */
-function showMessage(targetBubble, message, targetSound) {
-    targetSound.currentTime = 0;
-    targetSound.play();
-    targetBubble.innerText = message;
-    targetBubble.style.opacity = 1;
-    checkDialog = true;
-    setTimeout(hideMessage, 4 * sec, targetBubble, targetSound)
-
-}
-/**
- * hides  the message and pauses the audio
- * @param {getElementById} targetBubble 
- * @param {getElementById} targetSound 
- */
-function hideMessage(targetBubble, targetSound) {
-    targetSound.pause();
-    targetBubble.innerText = "";
-    targetBubble.style.opacity = 0;
-}
-
 
 runGame();
