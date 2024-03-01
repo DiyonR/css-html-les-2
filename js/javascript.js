@@ -4,12 +4,25 @@ document.getElementById("mainTitle").innerText = "Point And Click Adventure Game
 
 
 // gamestttate
-gameState = {
+let gameState = {
     "inventory": [],
-    "coinPickedUp": false
+    "coinPickedUp": false,
+    "keyPickedUp": false
 }
 
 
+localStorage.removeItem("gameState");
+
+
+if (Storage) {
+    if (localStorage.gameState) {
+        // uses localstorage gamestate string and convert it to an object then store it into gameState
+        gameState = JSON.parse(localStorage.gameState);
+    } else {
+        // convert local object variable to a string then store it to local storage
+        localStorage.setItem("gameState", JSON.stringify(gameState));
+    }
+}
 
 
 
@@ -18,6 +31,7 @@ function runGame() {
     // gameWindow reference
     const gameWindow = document.getElementById("gameWindow");
     const inventoryList = document.getElementById("inventoryList");
+
     const sec = 1000;
     //main character code
 
@@ -35,8 +49,11 @@ function runGame() {
     // objects
     const KeyElement = document.getElementById("key");
 
+    if (gameState.keyPickedUp) {
+        document.getElementById("key").remove();
+    }
 
-
+    updateInventory(gameState.inventory, inventoryList);
     gameWindow.onclick = function (e) {
         var rect = gameWindow.getBoundingClientRect();
         var x = e.clientX - rect.left;
@@ -55,22 +72,26 @@ function runGame() {
 
                     changeInventory("key", "Add");
                     document.getElementById("key").remove();
-
+                    gameState.keyPickedUp = true;
+                    saveGameState(gameState);
                     break;
                 case "Well":
                     if (gameState.coinPickedUp == false) {
 
                         changeInventory("coin", "Add");
+
                         gameState.coinPickedUp = true;
+                        showMessage(heroSpeech, "Wow a coin", heroAudio);
 
                     } else {
                         console.log("There's no more coins in this well :(");
+                        showMessage(heroSpeech, "hmm there are no coins here", heroAudio);
                     }
 
                     break;
                 case "doorWizardHut":
                     if (checkItem("key")) {
-                        showMessage(heroSpeech, "the door has opened", heroAudio);
+                        showMessage(heroSpeech, "the dooropened!", heroAudio);
                         console.log("opened door");
 
                     } else if (checkItem("coin")) {
@@ -187,6 +208,13 @@ function runGame() {
 
         targetBubble.style.opacity = "0";
     }
+}
+/**
+ * saves gamestate into localStorage
+ * @param {object} gameState 
+ */
+function saveGameState(gameState) {
+    localStorage.gameState = JSON.stringify(gameState);
 }
 
 runGame();
