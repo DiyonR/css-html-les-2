@@ -91,14 +91,19 @@ function runGame() {
                     break;
                 case "doorWizardHut":
                     if (checkItem("key")) {
-                        showMessage(heroSpeech, "the dooropened!", heroAudio);
+                        showMessage(heroSpeech, "the door opened!, anybody inside?", heroAudio);
+                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                        setTimeout(showMessage, 4 * sec, counterSpeech, "do you have the coin?", counterAudio);
+                        setTimeout(showMessage, 8 * sec, heroSpeech, "erm no, where can i find it?", heroAudio);
+                        setTimeout(showMessage, 12 * sec, counterSpeech, "somewhere far from here on the end of the pathway to heaven, now search", counterAudio);
+                        setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
                         console.log("opened door");
 
-                    } else if (checkItem("coin")) {
+                    } else if (checkItem("key") && checkItem("coin")) {
                         changeInventory("coin", "remove");
-                        showMessage(heroSpeech, "oh no my lucky Coin fell through the door opening", heroAudio);
-
-
+                        showMessage(heroSpeech, "I found the coin you asked for", heroAudio);
+                    } else if (checkItem("coin")) {
+                        showMessage(counterSpeech, "No key?", counterAudio);
                     } else {
                         showMessage(heroSpeech, "I need a key..", heroAudio);
 
