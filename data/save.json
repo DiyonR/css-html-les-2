@@ -1,5 +1,7 @@
 {
     "inventory": [],
     "coinPickedUp": false,
+    "keyPickedUp": false,
+    "swordPickedUp": false,
     "loadedFromSaveFile": true
 }

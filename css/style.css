@@ -114,6 +114,14 @@ body {
     left: 540px;
 }
 
+#sword {
+    width: 30px;
+    height: 30px;
+
+    left: 400px;
+    top: 70px;
+}
+
 #Well {
     width: 25px;
     height: 25px;
@@ -138,6 +146,27 @@ body {
     top: 510px;
     transition: all 1s ease-in-out;
 }
+
+
+#chest1 {
+    width: 30px;
+    height: 30px;
+
+    left: 300px;
+    top: 440px;
+}
+
+#chest2 {
+    width: 30px;
+    height: 30px;
+
+    left: 675px;
+    top: 106px;
+}
+
+
+
+
 
 #tile {
     width: 800px;

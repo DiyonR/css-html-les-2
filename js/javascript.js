@@ -7,7 +7,8 @@ document.getElementById("mainTitle").innerText = "Point And Click Adventure Game
 let gameState = {
     "inventory": [],
     "coinPickedUp": false,
-    "keyPickedUp": false
+    "keyPickedUp": false,
+    "swordPickedUp": false
 }
 
 
@@ -48,9 +49,13 @@ function runGame() {
 
     // objects
     const KeyElement = document.getElementById("key");
+    const swordElement = document.getElementById("sword");
 
     if (gameState.keyPickedUp) {
         document.getElementById("key").remove();
+    }
+    if (gameState.swordPickedUp) {
+        document.getElementById("sword").remove();
     }
 
     updateInventory(gameState.inventory, inventoryList);
@@ -86,25 +91,37 @@ function runGame() {
                     } else {
                         console.log("There's no more coins in this well :(");
                         showMessage(heroSpeech, "hmm there are no coins here", heroAudio);
-                    }
+                    } break;
+                case "sword":
 
+                    changeInventory("sword", "Add");
+                    document.getElementById("sword").remove();
+                    gameState.swordPickedUp = true;
+                    saveGameState(gameState);
+                    console.log("yooooo");
                     break;
+
                 case "doorWizardHut":
                     if (checkItem("key")) {
+                        changeInventory("key", "remove");
                         showMessage(heroSpeech, "the door opened!, anybody inside?", heroAudio);
                         setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
                         setTimeout(showMessage, 4 * sec, counterSpeech, "do you have the coin?", counterAudio);
                         setTimeout(showMessage, 8 * sec, heroSpeech, "erm no, where can i find it?", heroAudio);
-                        setTimeout(showMessage, 12 * sec, counterSpeech, "somewhere far from here on the end of the pathway to heaven, now search", counterAudio);
+                        setTimeout(showMessage, 12 * sec, counterSpeech, "'somewhere far from here on the end of the pathway to heaven, now search'", counterAudio);
                         setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
                         console.log("opened door");
 
-                    } else if (checkItem("key") && checkItem("coin")) {
+                    } else if (checkItem("coin")) {
                         changeInventory("coin", "remove");
                         showMessage(heroSpeech, "I found the coin you asked for", heroAudio);
-                    } else if (checkItem("coin")) {
-                        showMessage(counterSpeech, "No key?", counterAudio);
-                    } else {
+                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                        setTimeout(showMessage, 4 * sec, counterSpeech, "very well now i just need sword", counterAudio);
+                        setTimeout(showMessage, 8 * sec, heroSpeech, "soooo, where is it?", heroAudio);
+                        setTimeout(showMessage, 12 * sec, counterSpeech, "'like pirates they always find the treasure in a ...'", counterAudio);
+                        setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+                    }
+                    else {
                         showMessage(heroSpeech, "I need a key..", heroAudio);
 
                         setTimeout(showMessage, 4 * sec, heroSpeech, "maybe I should look at the signs?", heroAudio);
@@ -120,6 +137,18 @@ function runGame() {
                     setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
 
                     console.log("hey wanna know where the key is? it is behind some grave i heard");
+                    break;
+                case "chest1":
+                    showMessage(heroSpeech, "hmm not here", heroAudio)
+                    break;
+                case "chest2":
+                    showMessage(heroSpeech, "sup wooden chest", heroAudio)
+                    setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                    setTimeout(showMessage, 4 * sec, counterSpeech, "my guyyy, how are you??", counterAudio);
+                    setTimeout(showMessage, 8 * sec, heroSpeech, "no time for chatting, give me the sword", heroAudio);
+                    setTimeout(showMessage, 12 * sec, counterSpeech, "ugh its by some logs", counterAudio);
+                    setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+
                     break;
                 default:
                     break;
