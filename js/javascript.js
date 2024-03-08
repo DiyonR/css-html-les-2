@@ -29,6 +29,10 @@ if (Storage) {
 
 function runGame() {
 
+
+
+    document.getElementById("mainTitle").innerText = "'The Escape Room Game where it all starts with the door.'";
+
     // gameWindow reference
     const gameWindow = document.getElementById("gameWindow");
     const inventoryList = document.getElementById("inventoryList");
@@ -120,6 +124,11 @@ function runGame() {
                         setTimeout(showMessage, 8 * sec, heroSpeech, "soooo, where is it?", heroAudio);
                         setTimeout(showMessage, 12 * sec, counterSpeech, "'like pirates they always find the treasure in a ...'", counterAudio);
                         setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+                    }
+                    else if (checkItem("sword")) {
+                        changeInventory("sword", "remove");
+                        document.getElementById("mainTitle").innerText = "You Win!";
+                        showMessage(heroSpeech, "Finally I am FREE!", heroAudio);
                     }
                     else {
                         showMessage(heroSpeech, "I need a key..", heroAudio);
